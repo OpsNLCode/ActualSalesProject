@@ -1,0 +1,6 @@
+Este projeto foi feito com o intuito de desenvolver a parte de back-end de um site teste.
+Será necessario desenvolver uma validação dos campos:nome,data_nascimento,email e telefone .
+Com o seguintes critérios o nome deverá conter no minimo duas palavras , o email deverá conter "@" , os valores digitados na data de nascimento devem ser do tipo Date.
+Em telefone o campo deverá conter a mascara de entrada(00)0000-0000.
+No Step 2 as combobox deverão ser prenchidas com o valor especificamente a combobox unidade que deverá conter os estados.
+E por fim deverá ser realizado um calculo de acordo com o que o usuario escolheu nos campos anteriores.
