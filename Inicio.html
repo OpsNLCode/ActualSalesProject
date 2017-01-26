@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+<script language="javascript" type="text/javascript">	
+function validar() {
+var nome = step1.nome.value;
+var data_nascimento = step1.data_nascimento.value;
+var  email= step1.email.value;
+var telefone = step1.telefone.value;
+
+if((nome=="")&&(data_nascimento=="")&&(email=="")&&(telefone=="")){
+alert('Campos vazios preencha-os');
+form1.nome.focus();
+location.reload("Inicio.html");
+return false;
+
+}
+
+if (nome == "") {
+alert('Preencha o campo com seu nome');
+form1.nome.focus();
+return false;
+}
+
+if (data_nascimento == "") {
+alert('Preencha o campo com sua data de nascimento');
+step1.data_nascimento.focus();
+return false;
+}
+if (email == "") {
+alert('Preencha o campo com seu e-mail');
+step1.email.focus();
+return false;
+}
+if (telefone == "") {
+alert('Preencha o campo com seu telefone');
+step1.telefone.focus();
+return false;
+}
+if(preg_match("/\(?\d{2}\)?\s?\d{5}\-?\d{4}/", telefone)) {
+  alert('Telefone valido');
+}else{
+alert('Telefone invalido');
+step1.telefone.focus();
+return false;
+
+jQuery(function($){
+   $("#data").mask("99-99-9999",{placeholder:" "});
+});
+}
+}
+</script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Compre Já</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row" style="margin:30px 0">
+                <div class="col-lg-3">
+                    <img src="img/logo.png" class="img-thumbnail">
+                </div>
+                <div class="col-lg-9">
+                    <h3>Nome do Produto</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6" id="form-container">
+
+                    <form action="stepUm.php" method="post" name="step1"  id="step_1" class="form-step">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    Preencha seus dados para receber contato
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <fieldset>
+                                    <div class="row form-group">
+                                        <div class="col-lg-6">
+                                            <label>Nome Completo</label>
+                                            <input class="form-control" type="name" placeholder="XXX XXX" name="nome" >
+                                        </div>
+                                          
+                                        <div class="col-lg-6">
+                                            <label>Data de Nascimento</label>
+                                            <input class="form-control" type="date" id="data"  maxlength="8" placeholder="00/00/0000" name="data_nascimento"  >
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col-lg-6">
+                                            <label>Email</label>
+                                            <input class="form-control" placeholder="xx@xxx.com" type="email" name="email"  >
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label>Telefone</label>
+                                            <input class="form-control" maxlength="12" placeholder="(00)0000-0000" id="tel" type="text" name="telefone">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <button type="submit"  name="btnStep1" onclick="return validar()" class="btn btn-lg btn-info next-step" >Próximo Passo</button>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+
+  <!-- <form method="post" name="Step2" action="Step2.php "id="step_2" class="form-step" style="display:none">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    Preencha seus dados para receber contato
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <fieldset>
+                                    <div class="row form-group">
+                                        <div class="col-lg-6">
+                                            <label>Região</label>
+                                            <select class="form-control" name="regiao" required>
+                                                <option value="">Selecione a sua região</option>
+                                                <option>Sul</option>
+                                                <option>Sudeste</option>
+                                                <option>Centro-Oeste</option>
+                                                <option>Nordeste</option>
+                                                <option>Norte</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label>Unidade</label>
+                                            <select class="form-control" name="unidade" required>
+                                                <option value="">Selecione a unidade mais próxima</option>
+                                                <option>???</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <button type="submit" class="btn btn-lg btn-info next-step">Enviar</button>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div id="step_sucesso" class="form-step" style="display:none">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    Obrigado pelo cadastro!
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                Em breve você receberá uma ligação com mais informações!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h1>Chamada interessante para o produto</h1>
+                    <h2>Mais uma informação relevante</h2>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+                $('.next-step').click(function (event) {
+                    event.preventDefault();
+                    $(this).parents('.form-step').hide().next().show();
+                });
+            });
+        </script>-->
+    </body>
+</html>
